@@ -74,8 +74,6 @@ class BackupCurrentConfigMessage : public DataMessageGeneric {
 public:
     RuntimeConfigCommand runtimeConfigCommand;
 
-    // TODO: Add necessary attributes
-
     void serialize(JsonObject& doc) {
         // Create a data object
         JsonObject dataObj = doc.createNestedObject("data");
@@ -105,8 +103,6 @@ class RestoreFromBackupMessage : public DataMessageGeneric {
 public:
     RuntimeConfigCommand runtimeConfigCommand;
 
-    // TODO: Add necessary attributes
-
     void serialize(JsonObject& doc) {
         // Create a data object
         JsonObject dataObj = doc.createNestedObject("data");
@@ -121,8 +117,6 @@ public:
         ((DataMessageGeneric*)(this))->serialize(doc);
 
         doc["message_type"] = "RestoreFromBackup";
-
-        // TODO: Add corresponding serialize of attributes
     }
 
     void deserialize(JsonObject& doc) {
