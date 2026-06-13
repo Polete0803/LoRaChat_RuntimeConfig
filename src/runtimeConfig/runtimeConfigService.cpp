@@ -79,26 +79,13 @@ void RuntimeConfigService::processReceivedMessage(messagePort port, DataMessage*
 
             config = LoraMesher::getInstance().getConfig();
             
+            // Modify LoRa pins
+            if (modifyConfigMessage->loraCs <= 35) config.loraCs = modifyConfigMessage->loraCs;
+            if (modifyConfigMessage->loraRst <= 35) config.loraRst = modifyConfigMessage->loraRst;
+            if (modifyConfigMessage->loraIrq <= 35) config.loraIrq = modifyConfigMessage->loraIrq;
+            if (modifyConfigMessage->loraIo1 <= 35) config.loraIo1 = modifyConfigMessage->loraIo1;
 
-            if (modifyConfigMessage->loraCs <= 30) {
-                config.loraCs = modifyConfigMessage->loraCs;
-            }
-
-            if (modifyConfigMessage->loraRst <= 30) {
-                config.loraRst = modifyConfigMessage->loraRst;
-            }
-
-            if (modifyConfigMessage->loraIrq <= 30) {
-                config.loraIrq = modifyConfigMessage->loraIrq;
-            }
-
-            if (modifyConfigMessage->loraIo1 <= 30) {
-                config.loraIo1 = modifyConfigMessage->loraIo1;
-            }
-
-            if (modifyConfigMessage->freq >= 137.0 && modifyConfigMessage->freq <= 1020.0) {
-                config.freq = modifyConfigMessage->freq;
-            }
+            if (modifyConfigMessage->freq >= 137.0 && modifyConfigMessage->freq <= 1020.0) config.freq = modifyConfigMessage->freq;
 
             allowed = false;
             i = 0;
@@ -117,7 +104,7 @@ void RuntimeConfigService::processReceivedMessage(messagePort port, DataMessage*
             if (modifyConfigMessage->power >= 2 && modifyConfigMessage->sf <= 17) config.power = modifyConfigMessage->power;
 
             if (modifyConfigMessage->preambleLength != (uint8_t)-1) config.preambleLength =  modifyConfigMessage->preambleLength;
-
+            
             if (modifyConfigMessage->max_packet_size >= 13 && modifyConfigMessage->max_packet_size <= 255) config.max_packet_size = modifyConfigMessage->max_packet_size;
 
             ESP_LOGI(RUNTIME_CONFIG_TAG, 

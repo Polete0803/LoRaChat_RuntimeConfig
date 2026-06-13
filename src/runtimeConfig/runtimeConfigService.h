@@ -50,13 +50,10 @@ private:
     LoraMesher::LoraMesherConfig backupConfig;
 
     const static int BW_ARRAY_SIZE = 9;
-
     const float allowedBwValues[BW_ARRAY_SIZE] = {10.4, 15.6, 20.8, 31.25, 41.7, 62.5, 125, 250, 500};
 
     DataMessage* getModifyConfigMessage(JsonObject data);
-
     DataMessage* getBackupCurrentConfigMessage(JsonObject data);
-
     DataMessage* getRestoreFromBackupMessage(JsonObject data);
 
 };

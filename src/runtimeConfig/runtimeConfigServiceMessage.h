@@ -46,8 +46,6 @@ public:
         ((DataMessageGeneric*)(this))->serialize(doc);
 
         doc["message_type"] = "ModifyConfig";
-
-        // TODO: Add corresponding serialize of attributes
     }
 
     void deserialize(JsonObject& doc) {
@@ -88,8 +86,6 @@ public:
         ((DataMessageGeneric*)(this))->serialize(doc);
 
         doc["message_type"] = "BackupCurrentConfig";
-
-        // TODO: Add corresponding serialize of attributes
     }
 
     void deserialize(JsonObject& doc) {
