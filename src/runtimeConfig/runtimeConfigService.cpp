@@ -97,11 +97,11 @@ void RuntimeConfigService::processReceivedMessage(messagePort port, DataMessage*
 
             if (modifyConfigMessage->sf >= 6 && modifyConfigMessage->sf <= 12) config.sf = modifyConfigMessage->sf;
 
-            if (modifyConfigMessage->cr >= 5 && modifyConfigMessage->sf <= 8) config.cr = modifyConfigMessage->cr;
+            if (modifyConfigMessage->cr >= 5 && modifyConfigMessage->cr <= 8) config.cr = modifyConfigMessage->cr;
 
             if (modifyConfigMessage->syncWord != 0 && modifyConfigMessage->syncWord != (uint8_t)0x34) config.syncWord = modifyConfigMessage->syncWord;
 
-            if (modifyConfigMessage->power >= 2 && modifyConfigMessage->sf <= 17) config.power = modifyConfigMessage->power;
+            if (modifyConfigMessage->power >= 2 && modifyConfigMessage->power <= 17) config.power = modifyConfigMessage->power;
 
             if (modifyConfigMessage->preambleLength != 0) config.preambleLength =  modifyConfigMessage->preambleLength;
             
