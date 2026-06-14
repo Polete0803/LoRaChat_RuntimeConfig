@@ -80,10 +80,10 @@ void RuntimeConfigService::processReceivedMessage(messagePort port, DataMessage*
             config = LoraMesher::getInstance().getConfig();
             
             // Modify LoRa pins
-            if (modifyConfigMessage->loraCs <= 35) config.loraCs = modifyConfigMessage->loraCs;
-            if (modifyConfigMessage->loraRst <= 35) config.loraRst = modifyConfigMessage->loraRst;
-            if (modifyConfigMessage->loraIrq <= 35) config.loraIrq = modifyConfigMessage->loraIrq;
-            if (modifyConfigMessage->loraIo1 <= 35) config.loraIo1 = modifyConfigMessage->loraIo1;
+            config.loraCs = modifyConfigMessage->loraCs;
+            config.loraRst = modifyConfigMessage->loraRst;
+            config.loraIrq = modifyConfigMessage->loraIrq;
+            config.loraIo1 = modifyConfigMessage->loraIo1;
 
             if (modifyConfigMessage->freq >= 137.0 && modifyConfigMessage->freq <= 1020.0) config.freq = modifyConfigMessage->freq;
 
